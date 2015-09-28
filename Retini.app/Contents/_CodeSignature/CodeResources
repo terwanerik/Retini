@@ -6,49 +6,41 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		x4zvt/cZqigam3skeASrScl2IYw=
+		HwZ5b1TcnZ47/CakJ0TB9NytNx8=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		oQViTBBe7HMKy7TdQPRpRHkybG4=
+		p07LcwzPFakTByx6WH9vYjEF+7U=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uKTeF82VdN1XBoCD7K27VlLN2+c=
+			xzg278Lwzrr5kBWKq1WAtFeyP80=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/ffmpeg</key>
-		<data>
-		z6zYP37KrP3eX9Ig9hH9i8oq2ds=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		x4zvt/cZqigam3skeASrScl2IYw=
+		HwZ5b1TcnZ47/CakJ0TB9NytNx8=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		oQViTBBe7HMKy7TdQPRpRHkybG4=
+		p07LcwzPFakTByx6WH9vYjEF+7U=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uKTeF82VdN1XBoCD7K27VlLN2+c=
+			xzg278Lwzrr5kBWKq1WAtFeyP80=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>Resources/ffmpeg</key>
-		<data>
-		z6zYP37KrP3eX9Ig9hH9i8oq2ds=
-		</data>
 	</dict>
 	<key>rules</key>
 	<dict>
