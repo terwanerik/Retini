@@ -10,6 +10,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+- (BOOL)processFile:(NSString *)file;
 
 @end
 

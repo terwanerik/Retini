@@ -12,6 +12,8 @@
 		038880B91B305F6300F8807F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 038880B81B305F6300F8807F /* Images.xcassets */; };
 		038880BC1B305F6300F8807F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 038880BA1B305F6300F8807F /* MainMenu.xib */; };
 		038880C81B305F6300F8807F /* RetiniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880C71B305F6300F8807F /* RetiniTests.m */; };
+		038880D31B305FDB00F8807F /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880D21B305FDB00F8807F /* DragDropView.m */; };
+		03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,10 @@
 		038880C11B305F6300F8807F /* RetiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RetiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		038880C61B305F6300F8807F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		038880C71B305F6300F8807F /* RetiniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetiniTests.m; sourceTree = "<group>"; };
+		038880D11B305FDB00F8807F /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
+		038880D21B305FDB00F8807F /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
+		03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
+		03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,12 @@
 		038880B01B305F6300F8807F /* Retini */ = {
 			isa = PBXGroup;
 			children = (
+				03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */,
+				03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */,
 				038880B31B305F6300F8807F /* AppDelegate.h */,
 				038880B41B305F6300F8807F /* AppDelegate.m */,
+				038880D11B305FDB00F8807F /* DragDropView.h */,
+				038880D21B305FDB00F8807F /* DragDropView.m */,
 				038880B81B305F6300F8807F /* Images.xcassets */,
 				038880BA1B305F6300F8807F /* MainMenu.xib */,
 				038880B11B305F6300F8807F /* Supporting Files */,
@@ -212,6 +222,8 @@
 			files = (
 				038880B71B305F6300F8807F /* main.m in Sources */,
 				038880B51B305F6300F8807F /* AppDelegate.m in Sources */,
+				038880D31B305FDB00F8807F /* DragDropView.m in Sources */,
+				03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +413,7 @@
 				038880CD1B305F6300F8807F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		038880CE1B305F6300F8807F /* Build configuration list for PBXNativeTarget "RetiniTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +422,7 @@
 				038880D01B305F6300F8807F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
