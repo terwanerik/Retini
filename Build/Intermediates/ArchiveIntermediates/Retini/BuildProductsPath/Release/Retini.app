@@ -1,1 +1,0 @@
-/Users/Erik/Mac Apps/Retini/Build/Intermediates/ArchiveIntermediates/Retini/InstallationBuildProductsLocation/Applications/Retini.app
