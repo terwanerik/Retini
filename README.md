@@ -16,4 +16,4 @@ The resized images will be placed in the same directory as the source file. The 
 | @2x        | yes           | no            |
 | 1x         | yes           | yes           |
 
-The original file will never be altered, the `@2x` and `1x` are copies. If you drag a `@3x` file the `1x` file generated will be generated from the (original) `@3x`.
+The original file will never be altered, the `@2x` and `1x` are copies. If you drag a `@3x` file, the `1x` file generated will be generated from the (original) `@3x`.
