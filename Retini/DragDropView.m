@@ -195,7 +195,7 @@
 			fileType = NSPNGFileType;
 		}
 		
-		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionary]];
+		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor]];
 		
 		return [data writeToFile:path atomically:YES];
 	}
