@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		Wqel1q8yuM1Y+HDW1PMGCWklpMI=
+		+1ot2HnOdPp4MhWxJVJE+T9EpGM=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
@@ -16,7 +16,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xzg278Lwzrr5kBWKq1WAtFeyP80=
+			B+hXE9aas8LNv1KXosDBGV/0CeI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -24,13 +24,37 @@
 		<key>Resources/ffmpeg</key>
 		<data>
 		z6zYP37KrP3eX9Ig9hH9i8oq2ds=
+		</data>
+		<key>Resources/homeScreen.png</key>
+		<data>
+		7uGn+/IwO2pZWlzWZrIWT9sPab8=
+		</data>
+		<key>Resources/homeScreen@2x.png</key>
+		<data>
+		ERAfXDwQjAHAof8Wt+r1uYAUIiU=
+		</data>
+		<key>Resources/homeScreen~drop.png</key>
+		<data>
+		FMbcOGJTneFyuo84aIbGytjAjI0=
+		</data>
+		<key>Resources/homeScreen~drop@2x.png</key>
+		<data>
+		hPofVf1c89O76HWU+2icc/kFY3Q=
+		</data>
+		<key>Resources/homeScreen~noFind.png</key>
+		<data>
+		D26/UPqZkLWq57GAI9irvCu7plI=
+		</data>
+		<key>Resources/homeScreen~noFind@2x.png</key>
+		<data>
+		9Ghm3iRiakRwcJPkdGDfprcLWTY=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		Wqel1q8yuM1Y+HDW1PMGCWklpMI=
+		+1ot2HnOdPp4MhWxJVJE+T9EpGM=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
@@ -40,7 +64,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xzg278Lwzrr5kBWKq1WAtFeyP80=
+			B+hXE9aas8LNv1KXosDBGV/0CeI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -48,6 +72,30 @@
 		<key>Resources/ffmpeg</key>
 		<data>
 		z6zYP37KrP3eX9Ig9hH9i8oq2ds=
+		</data>
+		<key>Resources/homeScreen.png</key>
+		<data>
+		7uGn+/IwO2pZWlzWZrIWT9sPab8=
+		</data>
+		<key>Resources/homeScreen@2x.png</key>
+		<data>
+		ERAfXDwQjAHAof8Wt+r1uYAUIiU=
+		</data>
+		<key>Resources/homeScreen~drop.png</key>
+		<data>
+		FMbcOGJTneFyuo84aIbGytjAjI0=
+		</data>
+		<key>Resources/homeScreen~drop@2x.png</key>
+		<data>
+		hPofVf1c89O76HWU+2icc/kFY3Q=
+		</data>
+		<key>Resources/homeScreen~noFind.png</key>
+		<data>
+		D26/UPqZkLWq57GAI9irvCu7plI=
+		</data>
+		<key>Resources/homeScreen~noFind@2x.png</key>
+		<data>
+		9Ghm3iRiakRwcJPkdGDfprcLWTY=
 		</data>
 	</dict>
 	<key>rules</key>

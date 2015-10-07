@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSAlertDelegate>
 
 - (BOOL)processFile:(NSString *)file;
+- (IBAction)checkForUpdates:(id)sender;
 
 @end
 

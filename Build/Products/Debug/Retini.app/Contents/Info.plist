@@ -40,7 +40,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -63,8 +63,10 @@
 	<string>0701</string>
 	<key>DTXcodeBuild</key>
 	<string>7A1001</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.10</string>
+	<string>10.8</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 ET-ID. All rights reserved.</string>
 	<key>NSMainNibFile</key>

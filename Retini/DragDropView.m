@@ -189,7 +189,7 @@
 		
 		[image unlockFocus] ;
 		
-		NSUInteger fileType = NSJPEG2000FileType;
+		NSUInteger fileType = NSJPEGFileType;
 		
 		if([path containsString:@"png"]){
 			fileType = NSPNGFileType;
