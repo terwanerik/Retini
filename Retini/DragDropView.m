@@ -195,7 +195,13 @@
 			fileType = NSPNGFileType;
 		}
 		
-		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor]];
+		float quality = 1.0;
+		
+		if([[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"]){
+			quality = [[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"] / 10;
+		}
+		
+		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:quality] forKey:NSImageCompressionFactor]];
 		
 		return [data writeToFile:path atomically:YES];
 	}

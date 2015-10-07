@@ -15,6 +15,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="dropView" destination="UFV-hG-527" id="UMd-sg-ymt"/>
+                <outlet property="jpegQualityField" destination="X7t-CY-PkK" id="100-CP-leZ"/>
+                <outlet property="jpegQualityStepper" destination="ZjH-sF-SEO" id="PPA-bs-woe"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -34,7 +36,7 @@
                             <menuItem title="Check for updates" id="7wC-Vk-RlG">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="checkForUpdates:" target="-1" id="skE-ml-55Y"/>
+                                    <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="eMI-DZ-22C"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
@@ -102,13 +104,46 @@
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="UFV-hG-527" customClass="DragDropView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <subviews>
+                            <stepper focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-sF-SEO">
+                                <rect key="frame" x="141" y="14" width="19" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="lIG-j8-uhO"/>
+                                    <constraint firstAttribute="height" constant="22" id="v9p-H0-CVc"/>
+                                </constraints>
+                                <animations/>
+                                <stepperCell key="cell" continuous="YES" focusRingType="none" alignment="left" minValue="1" maxValue="10" doubleValue="10" id="1za-Vy-7Mh"/>
+                                <connections>
+                                    <action selector="stepperDidClick:" target="Voe-Tx-rLC" id="XGe-GW-7vp"/>
+                                </connections>
+                            </stepper>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZjH-sF-SEO" secondAttribute="bottom" constant="17" id="Bk4-O1-KJ3"/>
+                            <constraint firstItem="ZjH-sF-SEO" firstAttribute="leading" secondItem="UFV-hG-527" secondAttribute="leading" constant="144" id="Mbc-RA-Ag2"/>
+                        </constraints>
                         <animations/>
                     </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X7t-CY-PkK">
+                        <rect key="frame" x="18" y="15" width="121" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="117" id="Uqe-Rf-so6"/>
+                            <constraint firstAttribute="height" constant="22" id="cDx-Pc-hhj"/>
+                        </constraints>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="JPEG quality: 10/10" id="MsJ-wb-xpA">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="0.70239825581395354" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UFV-hG-527" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="2Ct-t8-YfJ"/>
                     <constraint firstAttribute="bottom" secondItem="UFV-hG-527" secondAttribute="bottom" id="OtE-Nm-Oyp"/>
                     <constraint firstAttribute="trailing" secondItem="UFV-hG-527" secondAttribute="trailing" id="YUm-nT-0ng"/>
+                    <constraint firstAttribute="bottom" secondItem="X7t-CY-PkK" secondAttribute="bottom" constant="15" id="eM6-aJ-f0L"/>
+                    <constraint firstItem="X7t-CY-PkK" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="qID-AZ-8zP"/>
                     <constraint firstItem="UFV-hG-527" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="siT-LZ-tfa"/>
                 </constraints>
                 <animations/>

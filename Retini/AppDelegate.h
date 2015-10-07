@@ -13,7 +13,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSAlertDelegate>
 
 - (BOOL)processFile:(NSString *)file;
-- (IBAction)checkForUpdates:(id)sender;
 
 @end
 
