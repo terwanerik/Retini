@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		+1ot2HnOdPp4MhWxJVJE+T9EpGM=
+		Wqel1q8yuM1Y+HDW1PMGCWklpMI=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
@@ -16,7 +16,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hyu3cL7bZKhKnMKaNnZ0D0TifT8=
+			JT7ovtG7IJ+H2EBqgV7YrAq1jM8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -48,13 +48,17 @@
 		<key>Resources/homeScreen~noFind@2x.png</key>
 		<data>
 		9Ghm3iRiakRwcJPkdGDfprcLWTY=
+		</data>
+		<key>Resources/pngout</key>
+		<data>
+		zX16TamWHeo0Kf9VTY7/FL/jyoM=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		+1ot2HnOdPp4MhWxJVJE+T9EpGM=
+		Wqel1q8yuM1Y+HDW1PMGCWklpMI=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
@@ -64,7 +68,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hyu3cL7bZKhKnMKaNnZ0D0TifT8=
+			JT7ovtG7IJ+H2EBqgV7YrAq1jM8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -96,6 +100,10 @@
 		<key>Resources/homeScreen~noFind@2x.png</key>
 		<data>
 		9Ghm3iRiakRwcJPkdGDfprcLWTY=
+		</data>
+		<key>Resources/pngout</key>
+		<data>
+		zX16TamWHeo0Kf9VTY7/FL/jyoM=
 		</data>
 	</dict>
 	<key>rules</key>

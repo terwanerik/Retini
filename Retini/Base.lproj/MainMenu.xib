@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A279b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9046" systemVersion="15B22c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8173.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9046"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -18,6 +18,7 @@
                 <outlet property="dropView" destination="UFV-hG-527" id="UMd-sg-ymt"/>
                 <outlet property="jpegQualityField" destination="X7t-CY-PkK" id="100-CP-leZ"/>
                 <outlet property="jpegQualityStepper" destination="ZjH-sF-SEO" id="PPA-bs-woe"/>
+                <outlet property="loader" destination="vRj-qO-NVA" id="Uq3-6R-ePA"/>
                 <outlet property="pngOutButton" destination="A20-29-Rh1" id="JLo-oY-32F"/>
                 <outlet property="settingsButton" destination="w6r-fJ-7xs" id="l0M-Mm-BfG"/>
                 <outlet property="topDragConstraint" destination="siT-LZ-tfa" id="Nt0-5h-WQe"/>
@@ -101,7 +102,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -204,11 +205,21 @@
                             <action selector="pngOutDidClick:" target="Voe-Tx-rLC" id="VpL-lH-tMj"/>
                         </connections>
                     </button>
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vRj-qO-NVA">
+                        <rect key="frame" x="232" y="277" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="3jV-oU-ODU"/>
+                            <constraint firstAttribute="height" constant="16" id="Rht-Yw-BWD"/>
+                        </constraints>
+                        <animations/>
+                    </progressIndicator>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YTv-ws-hhB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="0ek-Td-7FC"/>
                     <constraint firstItem="UFV-hG-527" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="2Ct-t8-YfJ"/>
                     <constraint firstItem="KF1-cY-Ld6" firstAttribute="top" secondItem="YTv-ws-hhB" secondAttribute="bottom" id="3L8-IZ-7cL"/>
+                    <constraint firstItem="vRj-qO-NVA" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="4NN-OO-n7C"/>
+                    <constraint firstItem="vRj-qO-NVA" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="67" id="4Tt-Rl-ezA"/>
                     <constraint firstItem="X7t-CY-PkK" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="5w1-cu-zdq"/>
                     <constraint firstItem="5uK-nn-Ujl" firstAttribute="leading" secondItem="KF1-cY-Ld6" secondAttribute="trailing" constant="1" id="Ekn-qN-45b"/>
                     <constraint firstItem="ZjH-sF-SEO" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="100" id="FeP-Fn-HOb"/>

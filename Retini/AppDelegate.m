@@ -22,6 +22,8 @@
 @property (nonatomic, retain) IBOutlet NSStepper *jpegQualityStepper;
 @property (nonatomic, retain) IBOutlet NSButton *pngOutButton;
 
+@property (nonatomic, retain) IBOutlet NSProgressIndicator *loader;
+
 - (IBAction)checkForUpdates:(id)sender;
 - (IBAction)hitSettings:(id)sender;
 - (IBAction)stepperDidClick:(id)sender;
@@ -32,6 +34,7 @@
 @implementation AppDelegate
 
 @synthesize jpegQualityField, jpegQualityStepper, settingsButton, pngOutButton;
+@synthesize loader;
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
 {
@@ -49,25 +52,35 @@
 {
 	if(self.bottomDragConstraint.animator.constant == 0){
 		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-			[context setDuration:0.25];
+			[context setDuration:0.2];
 			[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-			self.topDragConstraint.animator.constant = -100;
-			self.bottomDragConstraint.animator.constant = 100;
+			self.topDragConstraint.animator.constant = -105;
+			self.bottomDragConstraint.animator.constant = 105;
 			
 			[settingsButton setTitle:@"Close"];
 		} completionHandler:^{
-			
+			[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+				[context setDuration:0.3];
+				[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+				self.topDragConstraint.animator.constant = -100;
+				self.bottomDragConstraint.animator.constant = 100;
+			} completionHandler:nil];
 		}];
 	} else{
 		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-			[context setDuration:0.25];
-			[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
-			self.topDragConstraint.animator.constant = 0;
-			self.bottomDragConstraint.animator.constant = 0;
+			[context setDuration:0.15];
+			[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+			self.topDragConstraint.animator.constant = 5;
+			self.bottomDragConstraint.animator.constant = -5;
 			
 			[settingsButton setTitle:@"Settings"];
 		} completionHandler:^{
-			
+			[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+				[context setDuration:0.2];
+				[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+				self.topDragConstraint.animator.constant = 0;
+				self.bottomDragConstraint.animator.constant = 0;
+			} completionHandler:nil];
 		}];
 	}
 }
@@ -147,10 +160,93 @@
 {
 	if(returnCode == 1000){
 		if(alert.delegate == self){
-			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/terwanerik/Retini/raw/master/Retini.zip"]];
+			//[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/terwanerik/Retini/raw/master/Retini.zip"]];
+			
+			[self downloadNewZip];
 		} else{
 			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/terwanerik/Retini"]];
 		}
+	}
+}
+
+- (void)downloadNewZip
+{
+	[loader startAnimation:nil];
+	
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	manager.responseSerializer = [AFHTTPResponseSerializer serializer]; //to bad github gives the raw content as plain text
+	manager.requestSerializer = [AFHTTPRequestSerializer serializer]; //otherwise this would have been AFPlistResponse / requestserializers
+	
+	[manager GET:@"https://github.com/terwanerik/Retini/raw/master/Retini.zip"
+		parameters:nil
+			 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+				 [self installZip:responseObject];
+			 }
+			 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+				 NSAlert *newVersionAlert = [[NSAlert alloc] init];
+				 [newVersionAlert setMessageText:@"Couldn't download new version. Would you like to download it straight from GitHub?"];
+				 [newVersionAlert addButtonWithTitle:@"GitHub? Letsgo!"];
+				 [newVersionAlert addButtonWithTitle:@"I'm good."];
+				 [newVersionAlert setDelegate:nil];
+				 [newVersionAlert beginSheetModalForWindow:self.window
+																		 modalDelegate:self
+																		didEndSelector:@selector(alertButtonClicked:returnCode:contextInfo:)
+																			 contextInfo:nil];
+			 }];
+}
+
+- (void)installZip:(NSData *)zip
+{
+	NSString *filePath = [NSString stringWithFormat:@"%@/Retini.zip", NSTemporaryDirectory()];
+	
+	if([[NSFileManager defaultManager] createFileAtPath:filePath
+																					contents:zip
+																					 attributes:nil]){
+		
+		NSTask *task = [[NSTask alloc] init];
+		[task setLaunchPath:@"/usr/bin/unzip"];
+		[task setCurrentDirectoryPath:NSTemporaryDirectory()];
+		[task setArguments:@[@"-o", @"Retini.zip"]];
+		[task launch];
+		[task waitUntilExit];
+		
+		[loader stopAnimation:nil];
+		
+		NSError *error;
+		[[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+		
+		if(!error){
+			[[NSFileManager defaultManager] moveItemAtPath:[NSString stringWithFormat:@"%@/Retini.app", NSTemporaryDirectory()]
+																							toPath:@"/Applications/Retini_tmp.app"
+																							 error:&error];
+			
+			[self relaunchAfterDelay:1.0];
+		}
+	}
+}
+
+- (void)relaunchAfterDelay:(float)seconds
+{
+	NSTask *task = [[NSTask alloc] init];
+	NSMutableArray *args = [NSMutableArray array];
+	[args addObject:@"-c"];
+	[args addObject:[NSString stringWithFormat:@"sleep %f; open \"%@\"", seconds, @"/Applications/Retini.app"]];
+	[task setLaunchPath:@"/bin/sh"];
+	[task setArguments:args];
+	[task launch];
+	
+	NSError *error;
+	
+	if([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Retini.app"]){
+		[[NSFileManager defaultManager] removeItemAtPath:@"/Applications/Retini.app" error:&error];
+	}
+	
+	if(!error){
+		[[NSFileManager defaultManager] moveItemAtPath:@"/Applications/Retini_tmp.app"
+																						toPath:@"/Applications/Retini.app"
+																						 error:&error];
+		
+		[[NSApplication sharedApplication] terminate:nil];
 	}
 }
 

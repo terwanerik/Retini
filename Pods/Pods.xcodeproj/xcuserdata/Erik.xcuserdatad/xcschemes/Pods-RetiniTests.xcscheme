@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F65A96AB03C47DF6F0EDE6FF"
+               BlueprintIdentifier = "A3B4B6D44C29DC2C31F5D692"
                BuildableName = "libPods-RetiniTests.a"
                BlueprintName = "Pods-RetiniTests"
                ReferencedContainer = "container:Pods.xcodeproj">

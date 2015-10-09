@@ -234,6 +234,7 @@
 	task.arguments = @[@"-y", fileName, fileName];
 	
 	[task launch];
+	[task waitUntilExit];
 	
 	return YES;
 }

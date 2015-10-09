@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8310FB743D77C134516981CB"
+               BlueprintIdentifier = "4C371D243F1A29877859F6E4"
                BuildableName = "libPods-Retini.a"
                BlueprintName = "Pods-Retini"
                ReferencedContainer = "container:Pods.xcodeproj">
