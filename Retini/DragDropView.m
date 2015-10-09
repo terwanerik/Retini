@@ -165,6 +165,10 @@
 		NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(original.size.width, original.size.height)];
 		[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""]];
 	}
+	
+	if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+		[self crushPng:fileName];
+	}
 }
 
 - (void)resize2x:(NSString *)fileName
@@ -173,6 +177,10 @@
 	NSImage *newImg = [self imageResize:original newSize:NSMakeSize(original.size.width, original.size.height)];
 	
 	[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""]];
+	
+	if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+		[self crushPng:fileName];
+	}
 }
 
 - (NSImage *)imageResize:(NSImage *)anImage newSize:(NSSize)newSize
@@ -203,10 +211,31 @@
 		
 		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:quality] forKey:NSImageCompressionFactor]];
 		
+		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+			if([data writeToFile:path atomically:YES]){
+				return [self crushPng:path];
+			}
+		}
+		
 		return [data writeToFile:path atomically:YES];
 	}
 	
 	return NO;
+}
+
+- (BOOL)crushPng:(NSString *)fileName
+{
+	if(![[fileName lowercaseString] containsString:@"png"]){
+		return NO;
+	}
+	
+	NSTask *task = [[NSTask alloc] init];
+	task.launchPath = [[NSBundle mainBundle] pathForResource:@"pngout" ofType:@""];
+	task.arguments = @[@"-y", fileName, fileName];
+	
+	[task launch];
+	
+	return YES;
 }
 
 - (void)drawRect:(NSRect)rect
@@ -214,11 +243,11 @@
 	[super drawRect:rect];
 	
 	if(notFound){
-		[self.window setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"homeScreen~noFind"]]];
+		[[NSImage imageNamed:@"homeScreen~noFind"] drawInRect:rect];
 	} else if(highlight){
-		[self.window setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"homeScreen~drop"]]];
+		[[NSImage imageNamed:@"homeScreen~drop"] drawInRect:rect];
 	} else{
-		[self.window setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"homeScreen"]]];
+		[[NSImage imageNamed:@"homeScreen"] drawInRect:rect];
 	}
 }
 

@@ -8,23 +8,30 @@
 
 #import "AppDelegate.h"
 #import "DragDropView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
-@property (weak) IBOutlet DragDropView *dropView;
+@property (nonatomic, retain) IBOutlet NSLayoutConstraint *topDragConstraint;
+@property (nonatomic, retain) IBOutlet NSLayoutConstraint *bottomDragConstraint;
+@property (nonatomic, retain) IBOutlet NSWindow *window;
+@property (nonatomic, retain) IBOutlet DragDropView *dropView;
 
+@property (nonatomic, retain) IBOutlet NSButton *settingsButton;
 @property (nonatomic, retain) IBOutlet NSTextField *jpegQualityField;
 @property (nonatomic, retain) IBOutlet NSStepper *jpegQualityStepper;
+@property (nonatomic, retain) IBOutlet NSButton *pngOutButton;
 
 - (IBAction)checkForUpdates:(id)sender;
+- (IBAction)hitSettings:(id)sender;
 - (IBAction)stepperDidClick:(id)sender;
+- (IBAction)pngOutDidClick:(id)sender;
 
 @end
 
 @implementation AppDelegate
 
-@synthesize jpegQualityField, jpegQualityStepper;
+@synthesize jpegQualityField, jpegQualityStepper, settingsButton, pngOutButton;
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
 {
@@ -38,6 +45,33 @@
 	return  YES; // Return YES when file processed succesfull, else return NO.
 }
 
+- (IBAction)hitSettings:(id)sender
+{
+	if(self.bottomDragConstraint.animator.constant == 0){
+		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+			[context setDuration:0.25];
+			[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+			self.topDragConstraint.animator.constant = -100;
+			self.bottomDragConstraint.animator.constant = 100;
+			
+			[settingsButton setTitle:@"Close"];
+		} completionHandler:^{
+			
+		}];
+	} else{
+		[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+			[context setDuration:0.25];
+			[context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
+			self.topDragConstraint.animator.constant = 0;
+			self.bottomDragConstraint.animator.constant = 0;
+			
+			[settingsButton setTitle:@"Settings"];
+		} completionHandler:^{
+			
+		}];
+	}
+}
+
 - (IBAction)stepperDidClick:(id)sender
 {
 	if([sender isKindOfClass:[NSStepper class]]){
@@ -45,11 +79,17 @@
 		
 		int stepperVal = MIN(MAX([stepper intValue], 1), 10);
 		
-		[jpegQualityField setStringValue:[NSString stringWithFormat:@"JPEG quality: %i/10", stepperVal]];
+		[jpegQualityField setStringValue:[NSString stringWithFormat:@"%i/10", stepperVal]];
 		
 		[[NSUserDefaults standardUserDefaults] setInteger:stepperVal forKey:@"jpegQuality"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
+}
+
+- (IBAction)pngOutDidClick:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] setInteger:[(NSButton *)sender state] forKey:@"pngOut"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)checkForUpdates:(id)sender
@@ -121,10 +161,25 @@
 		[jpegQualityStepper setDoubleValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"]];
 	}
 	
+	if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"]){
+		[pngOutButton setState:[[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"]];
+	}
+	
 	int stepperVal = MIN(MAX([jpegQualityStepper intValue], 1), 10);
 	
 	[jpegQualityStepper setAlphaValue:0.7];
-	[jpegQualityField setStringValue:[NSString stringWithFormat:@"JPEG quality: %i/10", stepperVal]];
+	[jpegQualityField setStringValue:[NSString stringWithFormat:@"%i/10", stepperVal]];
+	
+	[settingsButton setTarget:self];
+	[settingsButton setAction:@selector(hitSettings:)];
+	
+	NSColor *color = [NSColor colorWithWhite:1.0 alpha:0.8];
+	NSMutableAttributedString *colorTitle = [[NSMutableAttributedString alloc] initWithAttributedString:[pngOutButton attributedTitle]];
+	NSRange titleRange = NSMakeRange(0, [colorTitle length]);
+	[colorTitle addAttribute:NSForegroundColorAttributeName value:color range:titleRange];
+	[pngOutButton setAttributedTitle:colorTitle];
+	
+	[self.window setBackgroundColor:[NSColor colorWithWhite:0.08 alpha:1.0]];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

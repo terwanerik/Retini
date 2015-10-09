@@ -13,6 +13,8 @@
 		038880BC1B305F6300F8807F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 038880BA1B305F6300F8807F /* MainMenu.xib */; };
 		038880C81B305F6300F8807F /* RetiniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880C71B305F6300F8807F /* RetiniTests.m */; };
 		038880D31B305FDB00F8807F /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880D21B305FDB00F8807F /* DragDropView.m */; };
+		03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CB44F11BC80603003C4879 /* QuartzCore.framework */; };
+		03CB44F51BC8118E003C4879 /* pngout in Resources */ = {isa = PBXBuildFile; fileRef = 03CB44F41BC8118E003C4879 /* pngout */; };
 		03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */; settings = {ASSET_TAGS = (); }; };
 		B1DFB86CCCEFA41908A1ECAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D0CA933B9B2C98D739BDA6 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,8 @@
 		038880C71B305F6300F8807F /* RetiniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetiniTests.m; sourceTree = "<group>"; };
 		038880D11B305FDB00F8807F /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
 		038880D21B305FDB00F8807F /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
+		03CB44F11BC80603003C4879 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		03CB44F41BC8118E003C4879 /* pngout */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngout; sourceTree = "<group>"; };
 		03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		B51EA5C5128713B2229D087B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */,
 				B1DFB86CCCEFA41908A1ECAB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +94,7 @@
 		038880B01B305F6300F8807F /* Retini */ = {
 			isa = PBXGroup;
 			children = (
+				03CB44F31BC8117F003C4879 /* 3rd party */,
 				03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */,
 				03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */,
 				038880B31B305F6300F8807F /* AppDelegate.h */,
@@ -128,6 +134,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		03CB44F31BC8117F003C4879 /* 3rd party */ = {
+			isa = PBXGroup;
+			children = (
+				03CB44F41BC8118E003C4879 /* pngout */,
+			);
+			name = "3rd party";
+			sourceTree = "<group>";
+		};
 		4927C7DBA15A05F0F55914E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +154,7 @@
 		8285E5EB8194D0C596CD716C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03CB44F11BC80603003C4879 /* QuartzCore.framework */,
 				E7D0CA933B9B2C98D739BDA6 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -228,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				038880B91B305F6300F8807F /* Images.xcassets in Resources */,
+				03CB44F51BC8118E003C4879 /* pngout in Resources */,
 				038880BC1B305F6300F8807F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
