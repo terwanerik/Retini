@@ -9,8 +9,11 @@
 #import "DragDropView.h"
 #import "NSImage+Resize.h" // File from https://github.com/nate-parrott/Flashlight
 
+// I'm going to refractor this aswell, put everything that should be in a model, in a model.
+
 @implementation DragDropView
 
+@synthesize pngCrushLoader;
 @synthesize highlight, notFound;
 
 - (id)initWithFrame:(NSRect)frame
@@ -19,6 +22,8 @@
 	
 	if(self){
 		[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+		
+		[pngCrushLoader setAlphaValue:0.0];
 	}
 	
 	return self;
@@ -30,9 +35,16 @@
 	
 	if(self){
 		[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+		
+		[pngCrushLoader setAlphaValue:0.0];
 	}
 	
 	return self;
+}
+
+- (void)awakeFromNib
+{
+	[pngCrushLoader setAlphaValue:0.0];
 }
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
@@ -229,12 +241,27 @@
 		return NO;
 	}
 	
-	NSTask *task = [[NSTask alloc] init];
-	task.launchPath = [[NSBundle mainBundle] pathForResource:@"pngout" ofType:@""];
-	task.arguments = @[@"-y", fileName, fileName];
+	[pngCrushLoader setMaxValue:pngCrushLoader.maxValue + 1];
+	[pngCrushLoader setAlphaValue:1.0];
 	
-	[task launch];
-	[task waitUntilExit];
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+		NSTask *task = [[NSTask alloc] init];
+		task.launchPath = [[NSBundle mainBundle] pathForResource:@"pngout" ofType:@""];
+		task.arguments = @[@"-y", fileName, fileName];
+		
+		[task launch];
+		[task waitUntilExit];
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[pngCrushLoader setDoubleValue:pngCrushLoader.doubleValue + 1];
+			
+			if(pngCrushLoader.doubleValue == pngCrushLoader.maxValue){
+				[pngCrushLoader setAlphaValue:0.0];
+				[pngCrushLoader setDoubleValue:0];
+				[pngCrushLoader setMaxValue:0];
+			}
+		});
+	});
 	
 	return YES;
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9046" systemVersion="15B22c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9046"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -134,7 +134,24 @@
                     </stepper>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="UFV-hG-527" customClass="DragDropView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <subviews>
+                            <progressIndicator wantsLayer="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rli-D0-rtJ">
+                                <rect key="frame" x="20" y="46" width="440" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="k7p-Fl-f1F"/>
+                                </constraints>
+                                <animations/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rli-D0-rtJ" secondAttribute="trailing" constant="20" id="LlK-m2-Ssq"/>
+                            <constraint firstItem="rli-D0-rtJ" firstAttribute="leading" secondItem="UFV-hG-527" secondAttribute="leading" constant="20" id="O5c-tB-THd"/>
+                            <constraint firstAttribute="bottom" secondItem="rli-D0-rtJ" secondAttribute="bottom" constant="47" id="zZI-IA-yVO"/>
+                        </constraints>
                         <animations/>
+                        <connections>
+                            <outlet property="pngCrushLoader" destination="rli-D0-rtJ" id="Pc2-Ip-aj5"/>
+                        </connections>
                     </customView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YTv-ws-hhB">
                         <rect key="frame" x="18" y="-42" width="265" height="25"/>

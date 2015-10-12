@@ -10,6 +10,8 @@
 
 @interface DragDropView : NSView
 
+@property (nonatomic, retain) IBOutlet NSProgressIndicator *pngCrushLoader;
+
 @property BOOL highlight; // If should show the highlighted image
 @property BOOL notFound; // If no retina (@2x, @3x) files where found
 

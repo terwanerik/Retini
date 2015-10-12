@@ -12,6 +12,8 @@
 
 @interface AppDelegate ()
 
+// Jup, i know this all shoud be in neat UIWindows and stuff, i'm going to refractor the code soon.
+
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint *topDragConstraint;
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint *bottomDragConstraint;
 @property (nonatomic, retain) IBOutlet NSWindow *window;
