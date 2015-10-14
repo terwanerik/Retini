@@ -135,11 +135,19 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="UFV-hG-527" customClass="DragDropView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <subviews>
-                            <progressIndicator wantsLayer="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rli-D0-rtJ">
+                            <progressIndicator wantsLayer="YES" focusRingType="none" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rli-D0-rtJ">
                                 <rect key="frame" x="20" y="46" width="440" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="k7p-Fl-f1F"/>
                                 </constraints>
+                                <contentFilters>
+                                    <ciFilter name="CIVibrance">
+                                        <configuration>
+                                            <real key="inputAmount" value="-1"/>
+                                            <null key="inputImage"/>
+                                        </configuration>
+                                    </ciFilter>
+                                </contentFilters>
                                 <animations/>
                             </progressIndicator>
                         </subviews>
@@ -228,6 +236,16 @@
                             <constraint firstAttribute="width" constant="16" id="3jV-oU-ODU"/>
                             <constraint firstAttribute="height" constant="16" id="Rht-Yw-BWD"/>
                         </constraints>
+                        <contentFilters>
+                            <ciFilter name="CIColorControls">
+                                <configuration>
+                                    <real key="inputBrightness" value="1"/>
+                                    <real key="inputContrast" value="1"/>
+                                    <null key="inputImage"/>
+                                    <real key="inputSaturation" value="1"/>
+                                </configuration>
+                            </ciFilter>
+                        </contentFilters>
                         <animations/>
                     </progressIndicator>
                 </subviews>
