@@ -13,6 +13,7 @@
 		038880BC1B305F6300F8807F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 038880BA1B305F6300F8807F /* MainMenu.xib */; };
 		038880C81B305F6300F8807F /* RetiniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880C71B305F6300F8807F /* RetiniTests.m */; };
 		038880D31B305FDB00F8807F /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880D21B305FDB00F8807F /* DragDropView.m */; };
+		03C461981C2760CD00F1572A /* ResizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C461971C2760CD00F1572A /* ResizeModel.m */; };
 		03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CB44F11BC80603003C4879 /* QuartzCore.framework */; };
 		03CB44F51BC8118E003C4879 /* pngout in Resources */ = {isa = PBXBuildFile; fileRef = 03CB44F41BC8118E003C4879 /* pngout */; };
 		03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */; };
@@ -43,6 +44,8 @@
 		038880C71B305F6300F8807F /* RetiniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetiniTests.m; sourceTree = "<group>"; };
 		038880D11B305FDB00F8807F /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
 		038880D21B305FDB00F8807F /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
+		03C461961C2760CD00F1572A /* ResizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizeModel.h; sourceTree = "<group>"; };
+		03C461971C2760CD00F1572A /* ResizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizeModel.m; sourceTree = "<group>"; };
 		03CB44F11BC80603003C4879 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		03CB44F41BC8118E003C4879 /* pngout */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngout; sourceTree = "<group>"; };
 		03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
@@ -94,13 +97,12 @@
 		038880B01B305F6300F8807F /* Retini */ = {
 			isa = PBXGroup;
 			children = (
-				03CB44F31BC8117F003C4879 /* 3rd party */,
-				03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */,
-				03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */,
 				038880B31B305F6300F8807F /* AppDelegate.h */,
 				038880B41B305F6300F8807F /* AppDelegate.m */,
-				038880D11B305FDB00F8807F /* DragDropView.h */,
-				038880D21B305FDB00F8807F /* DragDropView.m */,
+				03C461951C27608F00F1572A /* Frameworks */,
+				03C461941C27608500F1572A /* Views */,
+				03C461931C27607D00F1572A /* Models */,
+				03CB44F31BC8117F003C4879 /* 3rd party */,
 				038880B81B305F6300F8807F /* Images.xcassets */,
 				038880BA1B305F6300F8807F /* MainMenu.xib */,
 				038880B11B305F6300F8807F /* Supporting Files */,
@@ -132,6 +134,33 @@
 				038880C61B305F6300F8807F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03C461931C27607D00F1572A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03C461961C2760CD00F1572A /* ResizeModel.h */,
+				03C461971C2760CD00F1572A /* ResizeModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		03C461941C27608500F1572A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				038880D11B305FDB00F8807F /* DragDropView.h */,
+				038880D21B305FDB00F8807F /* DragDropView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		03C461951C27608F00F1572A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */,
+				03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		03CB44F31BC8117F003C4879 /* 3rd party */ = {
@@ -299,6 +328,7 @@
 				038880B51B305F6300F8807F /* AppDelegate.m in Sources */,
 				038880D31B305FDB00F8807F /* DragDropView.m in Sources */,
 				03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */,
+				03C461981C2760CD00F1572A /* ResizeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

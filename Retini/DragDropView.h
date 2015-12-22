@@ -7,15 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ResizeModel.h"
 
 @interface DragDropView : NSView
 
+// Models
+@property (nonatomic, retain) ResizeModel *resizeModel;
+
+// UI
 @property (nonatomic, retain) IBOutlet NSProgressIndicator *pngCrushLoader;
 
 @property BOOL highlight; // If should show the highlighted image
 @property BOOL notFound; // If no retina (@2x, @3x) files where found
 
-// Method to check if dragged item is directory or single file
+// Methods
 - (void)checkFiles:(NSArray *)fileNames;
 
 @end
