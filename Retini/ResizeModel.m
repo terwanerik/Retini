@@ -97,11 +97,8 @@
 	NSImage *newImg2x = [self imageResize:[original copy] newSize:NSMakeSize(width, height)];
 	
 	if([self saveImage:newImg2x toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"]]){
-<<<<<<< HEAD
 		NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(original.size.width / screenScale, original.size.height / screenScale)];
-=======
-		NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(original.size.width, original.size.height)];
->>>>>>> 7dfa2ddc8d939ef44733a4eb1abea3f2e711bc9b
+		
 		[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""]];
 	}
 	
