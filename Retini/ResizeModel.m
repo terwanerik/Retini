@@ -88,40 +88,40 @@
 
 - (void)resize3x:(NSString *)fileName
 {
-	NSImage *original = [[NSImage alloc] initWithContentsOfFile:fileName];
-	
-	CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
-	float width = (original.size.width * 2) / screenScale;
-	float height = (original.size.height * 2) / screenScale;
-	
-	NSImage *newImg2x = [self imageResize:[original copy] newSize:NSMakeSize(width, height)];
-	
-	if([self saveImage:newImg2x toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"]]){
-		NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(original.size.width / screenScale, original.size.height / screenScale)];
-		
-		[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""]];
-	}
-	
-	if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
-		[self crushPng:fileName];
-	}
+    NSImage *original = [[NSImage alloc] initWithContentsOfFile:fileName];
+    if(original.representations.count > 0){
+        float width = original.representations[0].pixelsWide;
+        float height = original.representations[0].pixelsHigh;
+        
+        NSImage *newImg2x = [self imageResize:[original copy] newSize:NSMakeSize(2*width/3, 2*height/3)];
+        
+        if([self saveImage:newImg2x toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"]]){
+            NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(width/3, height/3)];
+            
+            [self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""]];
+        }
+        
+        if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+            [self crushPng:fileName];
+        }
+    }
 }
 
 - (void)resize2x:(NSString *)fileName
 {
-	NSImage *original = [[NSImage alloc] initWithContentsOfFile:fileName];
-	
-	CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
-	float width = original.size.width / screenScale;
-	float height = original.size.height / screenScale;
-	
-	NSImage *newImg = [self imageResize:original newSize:NSMakeSize(width, height)];
-	
-	[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""]];
-	
-	if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
-		[self crushPng:fileName];
-	}
+    NSImage *original = [[NSImage alloc] initWithContentsOfFile:fileName];
+    if(original.representations.count > 0){
+        float width = original.representations[0].pixelsWide;
+        float height = original.representations[0].pixelsHigh;
+        
+        NSImage *newImg = [self imageResize:original newSize:NSMakeSize(width/2, height/2)];
+        
+        [self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""]];
+        
+        if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+            [self crushPng:fileName];
+        }
+    }
 }
 
 - (NSImage *)imageResize:(NSImage *)anImage newSize:(NSSize)newSize
