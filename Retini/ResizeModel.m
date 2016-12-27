@@ -161,7 +161,8 @@
 			quality = [[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"] / 10;
 		}
 		
-		NSData *data = [bitmapRep representationUsingType:fileType properties:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:quality] forKey:NSImageCompressionFactor]];
+		NSDictionary *properties = quality == 1.0 ? @{} : @{NSImageCompressionFactor : @(quality)};
+		NSData *data = [bitmapRep representationUsingType:fileType properties:properties];
 		
 		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
 			if([data writeToFile:path atomically:YES]){
