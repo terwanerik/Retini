@@ -142,7 +142,7 @@
 			
 			[[NSFileManager defaultManager] moveItemAtPath:fromPath toPath:toPath error:&error];
 			
-			//[self relaunchAfterDelay:1.0];
+			[self relaunchAfterDelay:1.0];
 		}
 	}
 }
