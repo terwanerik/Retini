@@ -86,7 +86,6 @@
 	NSString *cleanVersionTag = [[versionTag componentsSeparatedByCharactersInSet:self.numberSet] componentsJoinedByString:@""];
 	
 	int localVersionNumber = [cleanVersionTag intValue];
-	localVersionNumber = 10; // TEMP
 	
 	if (self.delegate == nil) {
 		return;
