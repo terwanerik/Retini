@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
+#import "MainWindow.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSAlertDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 
-- (BOOL)processFile:(NSString *)file;
+@property (nonatomic, retain) IBOutlet MainWindow *window;
 
 @end
 

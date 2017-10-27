@@ -157,8 +157,8 @@
 		
 		float quality = 1.0;
 		
-		if([[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"]){
-			quality = [[NSUserDefaults standardUserDefaults] integerForKey:@"jpegQuality"] / 10;
+		if ([[NSUserDefaults standardUserDefaults] floatForKey:@"jpegQuality"]) {
+			quality = [[NSUserDefaults standardUserDefaults] floatForKey:@"jpegQuality"] / 10;
 		}
 		
 		NSDictionary *properties = quality == 1.0 ? @{} : @{NSImageCompressionFactor : @(quality)};

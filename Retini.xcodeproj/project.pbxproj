@@ -13,6 +13,8 @@
 		038880BC1B305F6300F8807F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 038880BA1B305F6300F8807F /* MainMenu.xib */; };
 		038880C81B305F6300F8807F /* RetiniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880C71B305F6300F8807F /* RetiniTests.m */; };
 		038880D31B305FDB00F8807F /* DragDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038880D21B305FDB00F8807F /* DragDropView.m */; };
+		039731AC1FA326F10040F92E /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 039731AB1FA326F10040F92E /* MainWindow.m */; };
+		039731AF1FA327350040F92E /* UpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 039731AE1FA327350040F92E /* UpdateModel.m */; };
 		03C461981C2760CD00F1572A /* ResizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C461971C2760CD00F1572A /* ResizeModel.m */; };
 		03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CB44F11BC80603003C4879 /* QuartzCore.framework */; };
 		03CB44F51BC8118E003C4879 /* pngout in Resources */ = {isa = PBXBuildFile; fileRef = 03CB44F41BC8118E003C4879 /* pngout */; };
@@ -44,6 +46,10 @@
 		038880C71B305F6300F8807F /* RetiniTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RetiniTests.m; sourceTree = "<group>"; };
 		038880D11B305FDB00F8807F /* DragDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropView.h; sourceTree = "<group>"; };
 		038880D21B305FDB00F8807F /* DragDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragDropView.m; sourceTree = "<group>"; };
+		039731AA1FA326F10040F92E /* MainWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		039731AB1FA326F10040F92E /* MainWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		039731AD1FA327350040F92E /* UpdateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateModel.h; sourceTree = "<group>"; };
+		039731AE1FA327350040F92E /* UpdateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateModel.m; sourceTree = "<group>"; };
 		03C461961C2760CD00F1572A /* ResizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizeModel.h; sourceTree = "<group>"; };
 		03C461971C2760CD00F1572A /* ResizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizeModel.m; sourceTree = "<group>"; };
 		03CB44F11BC80603003C4879 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -99,9 +105,10 @@
 			children = (
 				038880B31B305F6300F8807F /* AppDelegate.h */,
 				038880B41B305F6300F8807F /* AppDelegate.m */,
-				03C461951C27608F00F1572A /* Frameworks */,
+				039731A91FA326AD0040F92E /* Windows */,
 				03C461941C27608500F1572A /* Views */,
 				03C461931C27607D00F1572A /* Models */,
+				03C461951C27608F00F1572A /* Extensions */,
 				03CB44F31BC8117F003C4879 /* 3rd party */,
 				038880B81B305F6300F8807F /* Images.xcassets */,
 				038880BA1B305F6300F8807F /* MainMenu.xib */,
@@ -136,11 +143,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		039731A91FA326AD0040F92E /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				039731AA1FA326F10040F92E /* MainWindow.h */,
+				039731AB1FA326F10040F92E /* MainWindow.m */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
 		03C461931C27607D00F1572A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				03C461961C2760CD00F1572A /* ResizeModel.h */,
 				03C461971C2760CD00F1572A /* ResizeModel.m */,
+				039731AD1FA327350040F92E /* UpdateModel.h */,
+				039731AE1FA327350040F92E /* UpdateModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -154,13 +172,13 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		03C461951C27608F00F1572A /* Frameworks */ = {
+		03C461951C27608F00F1572A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */,
 				03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */,
 			);
-			name = Frameworks;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		03CB44F31BC8117F003C4879 /* 3rd party */ = {
@@ -326,8 +344,10 @@
 			files = (
 				038880B71B305F6300F8807F /* main.m in Sources */,
 				038880B51B305F6300F8807F /* AppDelegate.m in Sources */,
+				039731AC1FA326F10040F92E /* MainWindow.m in Sources */,
 				038880D31B305FDB00F8807F /* DragDropView.m in Sources */,
 				03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */,
+				039731AF1FA327350040F92E /* UpdateModel.m in Sources */,
 				03C461981C2760CD00F1572A /* ResizeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
