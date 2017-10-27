@@ -14,7 +14,7 @@
 @interface UpdateModel : NSObject
 
 - (void)checkForUpdates:(id)sender;
-- (void)downloadNewZip;
+- (void)downloadNewVersion;
 
 @property (nonatomic, weak) id <UpdateModelDelegate> delegate;
 

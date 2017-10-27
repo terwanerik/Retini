@@ -7,46 +7,97 @@
 //
 
 #import "UpdateModel.h"
+#define GHAPI_URL @"https://api.github.com/repos/terwanerik/Retini/releases"
+
+@interface UpdateModel()
+
+@property (nonatomic, retain) NSString *assetPath;
+@property (nonatomic, retain) NSCharacterSet *numberSet;
+
+@end
 
 @implementation UpdateModel
+
+- (id)init
+{
+	self = [super init];
+	
+	if (self) {
+		self.numberSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+	}
+	
+	return self;
+}
 
 - (void)checkForUpdates:(id)sender
 {
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	manager.responseSerializer = [AFHTTPResponseSerializer serializer]; //to bad github gives the raw content as plain text
-	manager.requestSerializer = [AFHTTPRequestSerializer serializer]; //otherwise this would have been AFPlistResponse / requestserializers
+	manager.responseSerializer = [AFJSONResponseSerializer serializer];
+	manager.requestSerializer = [AFHTTPRequestSerializer serializer];
 	
-	[manager GET:@"https://raw.githubusercontent.com/terwanerik/Retini/master/Retini/Info.plist" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[self checkPlist:responseObject andOrigin:sender];
+	[manager GET:GHAPI_URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self checkVersion:[self parseReleaseResponse:responseObject] andOrigin:sender];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		// just leave it be.
-		NSLog(@"checkForUpdates failed");
-		if (self.delegate != nil) {
-			if ([self.delegate respondsToSelector:@selector(updateModel:didFinishDownloading:)]) {
-				[self.delegate updateModel:self didFinishDownloading:false];
-			}
-		}
+		[self updateFailed];
 	}];
 }
 
-- (void)checkPlist:(NSData *)plistData andOrigin:(id)sender
+- (int)parseReleaseResponse:(NSArray *)response
 {
-	NSString *error;
-	NSPropertyListFormat format;
-	NSDictionary *plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
+	int versionNumber = 0;
 	
-	// remove dots to get big number. Versioning will never go beyond 10 so should work fine atm.
-	int onlineVersion = [[[plist objectForKey:@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""] intValue];
-	int myVersion = [[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] stringByReplacingOccurrencesOfString:@"." withString:@""] intValue];
+	if (![response isKindOfClass:[NSArray class]] || [response count] == 0) {
+		return versionNumber;
+	}
 	
-	if (self.delegate != nil) {
-		if ([self.delegate respondsToSelector:@selector(updateModel:didFoundNewVersion:sender:)]) {
-			[self.delegate updateModel:self didFoundNewVersion:(onlineVersion > myVersion) sender:sender];
+	NSDictionary *latestRelease = [response firstObject];
+	
+	if (![latestRelease isKindOfClass:[NSDictionary class]] || [latestRelease objectForKey:@"tag_name"] == nil) {
+		return versionNumber;
+	}
+	
+	
+	NSString *versionTag = [latestRelease objectForKey:@"tag_name"];
+	NSString *cleanVersionTag = [[versionTag componentsSeparatedByCharactersInSet:self.numberSet] componentsJoinedByString:@""];
+	
+	versionNumber = [cleanVersionTag intValue];
+	
+	NSArray *versionAssets = [latestRelease objectForKey:@"assets"];
+	
+	if (![versionAssets isKindOfClass:[NSArray class]] || [versionAssets count] == 0) {
+		return versionNumber;
+	}
+	
+	for (NSDictionary *dict in versionAssets) {
+		if ([[dict objectForKey:@"content_type"] isEqualToString:@"application/zip"]) {
+			self.assetPath = [dict objectForKey:@"browser_download_url"];
+			
+			break;
 		}
+	}
+	
+	return versionNumber;
+}
+
+- (void)checkVersion:(int)versionNumber andOrigin:(id)sender
+{
+	// remove dots to get big number. Versioning probably will never go beyond 10 so should work fine atm.
+	NSString *versionTag = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+	NSString *cleanVersionTag = [[versionTag componentsSeparatedByCharactersInSet:self.numberSet] componentsJoinedByString:@""];
+	
+	int localVersionNumber = [cleanVersionTag intValue];
+	localVersionNumber = 10; // TEMP
+	
+	if (self.delegate == nil) {
+		return;
+	}
+	
+	if ([self.delegate respondsToSelector:@selector(updateModel:didFoundNewVersion:sender:)]) {
+		[self.delegate updateModel:self didFoundNewVersion:(versionNumber > localVersionNumber) sender:sender];
 	}
 }
 
-- (void)downloadNewZip
+- (void)downloadNewVersion
 {
 	if (self.delegate != nil) {
 		if ([self.delegate respondsToSelector:@selector(updateModel:didStartDownloading:)]) {
@@ -55,27 +106,21 @@
 	}
 	
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	manager.responseSerializer = [AFHTTPResponseSerializer serializer]; //to bad github gives the raw content as plain text
-	manager.requestSerializer = [AFHTTPRequestSerializer serializer]; //otherwise this would have been AFPlistResponse / requestserializers
+	manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+	manager.requestSerializer = [AFHTTPRequestSerializer serializer];
 	
-	[manager GET:@"https://github.com/terwanerik/Retini/raw/master/Retini.zip"
-		parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[manager GET:self.assetPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			[self installZip:responseObject];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		if (self.delegate != nil) {
-			if ([self.delegate respondsToSelector:@selector(updateModel:didFinishDownloading:)]) {
-				[self.delegate updateModel:self didFinishDownloading:false];
-			}
-		}
+		[self updateFailed];
 	}];
 }
-
 
 - (void)installZip:(NSData *)zip
 {
 	NSString *filePath = [NSString stringWithFormat:@"%@/Retini.zip", NSTemporaryDirectory()];
 	
-	if([[NSFileManager defaultManager] createFileAtPath:filePath  contents:zip attributes:nil]){
+	if ([[NSFileManager defaultManager] createFileAtPath:filePath  contents:zip attributes:nil]) {
 		NSTask *task = [[NSTask alloc] init];
 		[task setLaunchPath:@"/usr/bin/unzip"];
 		[task setCurrentDirectoryPath:NSTemporaryDirectory()];
@@ -92,13 +137,13 @@
 		NSError *error;
 		[[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
 		
-		if(!error){
+		if (!error) {
 			NSString *fromPath = [NSString stringWithFormat:@"%@/Retini.app", NSTemporaryDirectory()];
 			NSString *toPath = @"/Applications/Retini_tmp.app";
 			
 			[[NSFileManager defaultManager] moveItemAtPath:fromPath toPath:toPath error:&error];
 			
-			[self relaunchAfterDelay:1.0];
+			//[self relaunchAfterDelay:1.0];
 		}
 	}
 }
@@ -115,7 +160,7 @@
 	
 	NSError *error;
 	
-	if([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Retini.app"]){
+	if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Retini.app"]) {
 		[[NSFileManager defaultManager] removeItemAtPath:@"/Applications/Retini.app" error:&error];
 	}
 	
@@ -127,6 +172,15 @@
 			if ([self.delegate respondsToSelector:@selector(updateModel:didFinishInstalling:)]) {
 				[self.delegate updateModel:self didFinishInstalling:true];
 			}
+		}
+	}
+}
+
+- (void)updateFailed
+{
+	if (self.delegate != nil) {
+		if ([self.delegate respondsToSelector:@selector(updateModel:didFinishDownloading:)]) {
+			[self.delegate updateModel:self didFinishDownloading:false];
 		}
 	}
 }

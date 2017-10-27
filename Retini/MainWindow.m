@@ -208,7 +208,7 @@
 {
 	if (returnCode == 1000) {
 		if (alert.delegate == self) {
-			[self.updateModel downloadNewZip];
+			[self.updateModel downloadNewVersion];
 		} else{
 			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/terwanerik/Retini"]];
 		}
