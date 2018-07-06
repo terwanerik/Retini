@@ -33,7 +33,7 @@
 		
 		if([fileManager fileExistsAtPath:filename isDirectory:&isDir]){
 			if(!isDir){
-				if([filename containsString:@"@2x"] || [filename containsString:@"@3x"]){
+				if([filename containsString:@"@2x"] || [filename containsString:@"@3x"] || [filename containsString:@"@1x"]){
 					return YES;
 				}
 			} else{
@@ -81,6 +81,8 @@
 			[self resize3x:file];
 		} else if([[file lowercaseString] containsString:@"@2x"]){
 			[self resize2x:file];
+		} else if([[file lowercaseString] containsString:@"@1x"]){
+			[self resize1x:file];
 		}
 	}
 }
@@ -99,15 +101,21 @@
 		height = height / screenScale;
 		
 		NSImage *newImg2x = [self imageResize:[original copy] newSize:NSMakeSize(width * 2, height * 2)];
+		NSString *newPath2x = [fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"];
 		
-		if([self saveImage:newImg2x toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@"@2x"]]){
+		if([self saveImage:newImg2x toPath:newPath2x]){
 			NSImage *newImg = [self imageResize:[original copy] newSize:NSMakeSize(width, height)];
+			NSString *newPath1x = [fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""];
 			
-			[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@3x" withString:@""]];
+			[self saveImage:newImg toPath:newPath1x];
+			
+			if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+				[self crushPng:newPath1x];
+			}
 		}
 		
 		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
-			[self crushPng:fileName];
+			[self crushPng:newPath2x];
 		}
 	}
 }
@@ -126,11 +134,51 @@
 		height = height / screenScale;
 		
 		NSImage *newImg = [self imageResize:original newSize:NSMakeSize(width, height)];
+		NSString *newPath = [fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""];
 		
-		[self saveImage:newImg toPath:[fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""]];
+		[self saveImage:newImg toPath:newPath];
 		
 		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
-			[self crushPng:fileName];
+			[self crushPng:newPath];
+		}
+	}
+}
+
+- (void)resize1x:(NSString *)fileName
+{
+	NSImage *original = [[NSImage alloc] initWithContentsOfFile:fileName];
+	
+	if (original.representations.count > 0) {
+		CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
+		
+		float width2x = original.representations[0].pixelsWide * 2;
+		float height2x = original.representations[0].pixelsHigh * 2;
+		
+		width2x = width2x / screenScale;
+		height2x = height2x / screenScale;
+		
+		NSImage *newImg2x = [self imageUpscale:original newSize:NSMakeSize(width2x, height2x)];
+		NSString *newPath2x = [fileName stringByReplacingOccurrencesOfString:@"@1x" withString:@"@2x"];
+		
+		[self saveImage:newImg2x toPath:newPath2x];
+		
+		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+			[self crushPng:newPath2x];
+		}
+		
+		float width3x = original.representations[0].pixelsWide * 3;
+		float height3x = original.representations[0].pixelsHigh * 3;
+		
+		width3x = width3x / screenScale;
+		height3x = height3x / screenScale;
+		
+		NSImage *newImg3x = [self imageUpscale:original newSize:NSMakeSize(width3x, height3x)];
+		NSString *newPath3x = [fileName stringByReplacingOccurrencesOfString:@"@1x" withString:@"@3x"];
+		
+		[self saveImage:newImg3x toPath:newPath3x];
+		
+		if([[NSUserDefaults standardUserDefaults] integerForKey:@"pngOut"] == 1){
+			[self crushPng:newPath3x];
 		}
 	}
 }
@@ -138,6 +186,11 @@
 - (NSImage *)imageResize:(NSImage *)anImage newSize:(NSSize)newSize
 {
 	return [anImage resizeImageToSize:newSize];
+}
+
+- (NSImage *)imageUpscale:(NSImage *)anImage newSize:(NSSize)newSize
+{
+	return [anImage upscaleImageToSize:newSize];
 }
 
 - (BOOL)saveImage:(NSImage *)image toPath:(NSString *)path
