@@ -17,3 +17,6 @@ The resized images will be placed in the same directory as the source file. The 
 | 1x         | &radic;       | &radic;       |
 
 The original file will never be altered, the `@2x` and `1x` are copies. If you drag a `@3x` file, the `1x` file generated will be generated from the (original) `@3x`, so no double conversion loss.
+
+### Pixel art upscaling
+You can drag a file with a `@1x` extension, Retini will scale this to a `@2x` and `@3x` file. This is nice for pixel art, upscaling is done via the nearest neighboor filter / algorithm.
