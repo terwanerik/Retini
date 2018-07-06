@@ -10,7 +10,8 @@
 
 @interface NSImage (Resize)
 
-- (NSImage*) resizeImageToSize:(NSSize)size;
+- (NSImage *)resizeImageToSize:(NSSize)size;
+- (NSImage *)upscaleImageToSize:(NSSize)size;
 - (NSImage *)resizeImageWithMaxDimension:(NSSize)size;
 
 @end
