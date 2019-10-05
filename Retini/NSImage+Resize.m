@@ -14,7 +14,7 @@
 
 - (NSImage *)resizeImageToSize:(NSSize)size
 {
-	return [self scaleImageToSize:size interpolation:NSImageInterpolationHigh];
+	return [self scaleImageToSize:size interpolation:NSImageInterpolationDefault];
 }
 
 - (NSImage *)upscaleImageToSize:(NSSize)size
