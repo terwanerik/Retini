@@ -237,7 +237,8 @@
 	
 	[pngCrushLoader setMaxValue:pngCrushLoader.maxValue + 1];
 	[pngCrushLoader setAlphaValue:1.0];
-	
+    [pngCrushLoader setHidden:NO];
+    
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
 		NSTask *task = [[NSTask alloc] init];
 		task.launchPath = [[NSBundle mainBundle] pathForResource:@"pngout" ofType:@""];
@@ -253,6 +254,7 @@
 				[pngCrushLoader setAlphaValue:0.0];
 				[pngCrushLoader setDoubleValue:0];
 				[pngCrushLoader setMaxValue:0];
+                [pngCrushLoader setHidden:YES];
 			}
 		});
 	});

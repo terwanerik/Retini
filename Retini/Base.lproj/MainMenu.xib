@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -90,12 +90,13 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="139" y="271"/>
         </menu>
         <window title="Retini" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -113,7 +114,7 @@
                         </textFieldCell>
                     </textField>
                     <stepper focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-sF-SEO">
-                        <rect key="frame" x="97" y="-85" width="19" height="26"/>
+                        <rect key="frame" x="97" y="-86" width="19" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="MuD-0Z-2vW"/>
                             <constraint firstAttribute="width" constant="13" id="gvl-98-OSH"/>
@@ -126,7 +127,7 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="UFV-hG-527" customClass="DragDropView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <subviews>
-                            <progressIndicator wantsLayer="YES" focusRingType="none" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rli-D0-rtJ">
+                            <progressIndicator hidden="YES" wantsLayer="YES" focusRingType="none" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="rli-D0-rtJ">
                                 <rect key="frame" x="20" y="46" width="440" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="k7p-Fl-f1F"/>
@@ -158,7 +159,7 @@
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Settings" id="NSa-IL-8Ni">
                             <font key="font" metaFont="systemBold" size="15"/>
-                            <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -169,7 +170,7 @@
                             <constraint firstAttribute="width" constant="150" id="jni-1z-Kpo"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="JPEG quality" id="gaC-6k-wVT">
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="palette"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="0.60218860815602837" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -181,7 +182,7 @@
                             <constraint firstAttribute="width" constant="166" id="ROE-5D-DZg"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Crush png (@3x, @2x and 1x)" id="V5O-zW-Agw">
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="palette"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="0.60218860819999998" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -265,6 +266,7 @@
                 <outlet property="settingsButton" destination="w6r-fJ-7xs" id="Fc2-v9-c6Y"/>
                 <outlet property="topDragConstraint" destination="siT-LZ-tfa" id="PBM-pw-9oK"/>
             </connections>
+            <point key="canvasLocation" x="139" y="158"/>
         </window>
     </objects>
 </document>
