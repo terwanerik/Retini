@@ -1,6 +1,6 @@
 ![alt text](https://github.com/terwanerik/Retini/blob/master/Images/Icon%7E256.png "Retini")
 # Retini
-A super fast and simple retina (@2x, @3x) image converter.
+A super fast and simple retina (@2x, @3x) image converter (and PDF).
 
 ## How to use?
 You can download the [prebuilt application from the releases](https://github.com/terwanerik/Retini/releases), or just download / fork the project and build it yourself.
@@ -20,3 +20,6 @@ The original file will never be altered, the `@2x` and `1x` are copies. If you d
 
 ### Pixel art upscaling
 You can drag a file with a `@1x` extension, Retini will scale this to a `@2x` and `@3x` file. This is nice for pixel art, upscaling is done via the nearest neighboor filter / algorithm.
+
+### PDF
+Retini supports PDF as input, just drop a PDF with original scale (1x) and let Retini convert & resize it to PNGs (@1x, @2x, @3x).
