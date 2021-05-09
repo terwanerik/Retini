@@ -8,7 +8,7 @@
 
 #import "ResizeModel.h"
 #import "NSImage+Resize.h"
-
+#import "Retini-Swift.h"
 @implementation ResizeModel
 
 @synthesize pngCrushLoader;
@@ -33,7 +33,7 @@
 		
 		if([fileManager fileExistsAtPath:filename isDirectory:&isDir]){
 			if(!isDir){
-				if([filename containsString:@"@2x"] || [filename containsString:@"@3x"] || [filename containsString:@"@1x"]){
+				if([filename containsString:@"@2x"] || [filename containsString:@"@3x"] || [filename containsString:@"@1x"] || [filename containsString:@"pdf"]){
 					return YES;
 				}
 			} else{
@@ -84,7 +84,18 @@
 		} else if([[file lowercaseString] containsString:@"@1x"]){
 			[self resize1x:file];
 		}
-	}
+    } else if ([[file lowercaseString] containsString:@"pdf"]) {
+        NSString *baseURL = [file stringByReplacingOccurrencesOfString:@".pdf" withString:@".png"];
+        for (int i = 3; i > 0; i--) {
+            NSImage *image = [PDFUtils drawPDFfromURLWithUrl:[NSURL fileURLWithPath:file] multiplier:i];
+            if (i > 1) {
+                NSString *file = [baseURL stringByReplacingOccurrencesOfString:@".png" withString:[NSString stringWithFormat:@"@%dx.png", i]];
+                bool value = [image writeToFileWithFile:file atomically:YES usingType:NSBitmapImageFileTypePNG];
+            } else {
+                bool value = [image writeToFileWithFile:baseURL atomically:YES usingType:NSBitmapImageFileTypePNG];
+            }
+        }
+    }
 }
 
 - (void)resize3x:(NSString *)fileName

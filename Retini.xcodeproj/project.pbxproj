@@ -19,7 +19,9 @@
 		03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CB44F11BC80603003C4879 /* QuartzCore.framework */; };
 		03CB44F51BC8118E003C4879 /* pngout in Resources */ = {isa = PBXBuildFile; fileRef = 03CB44F41BC8118E003C4879 /* pngout */; };
 		03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */; };
-		B1DFB86CCCEFA41908A1ECAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7D0CA933B9B2C98D739BDA6 /* libPods.a */; };
+		47328B574C6CD093C0056FA7 /* libPods-Retini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE008719F74460C095990B4 /* libPods-Retini.a */; };
+		50A4850F2647F8DD006F0F20 /* PDFConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A4850E2647F8DD006F0F20 /* PDFConverter.swift */; };
+		AB28F2F6303B6AEA12A075E1 /* libPods-RetiniTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A5B0C487DB0B46819370BB /* libPods-RetiniTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01073CEF1217BB100AF669F3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		038880AE1B305F6300F8807F /* Retini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Retini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038880B21B305F6300F8807F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		038880B31B305F6300F8807F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,8 +57,14 @@
 		03CB44F41BC8118E003C4879 /* pngout */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngout; sourceTree = "<group>"; };
 		03D63F7A1BB9804200CC8485 /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		03D63F7B1BB9804200CC8485 /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
-		B51EA5C5128713B2229D087B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		E7D0CA933B9B2C98D739BDA6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		44369B010FE891DCA46A076A /* Pods-RetiniTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetiniTests.release.xcconfig"; path = "Target Support Files/Pods-RetiniTests/Pods-RetiniTests.release.xcconfig"; sourceTree = "<group>"; };
+		50A4850D2647F8DC006F0F20 /* Retini-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Retini-Bridging-Header.h"; sourceTree = "<group>"; };
+		50A4850E2647F8DD006F0F20 /* PDFConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFConverter.swift; sourceTree = "<group>"; };
+		5960391DE4F06B79E1040C4E /* Pods-Retini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Retini.debug.xcconfig"; path = "Target Support Files/Pods-Retini/Pods-Retini.debug.xcconfig"; sourceTree = "<group>"; };
+		6CE008719F74460C095990B4 /* libPods-Retini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Retini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5A5B0C487DB0B46819370BB /* libPods-RetiniTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RetiniTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6257A74DA8D7820B4A03E96 /* Pods-RetiniTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetiniTests.debug.xcconfig"; path = "Target Support Files/Pods-RetiniTests/Pods-RetiniTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A6FDF1B4122CDD40C611D4E2 /* Pods-Retini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Retini.release.xcconfig"; path = "Target Support Files/Pods-Retini/Pods-Retini.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03CB44F21BC80603003C4879 /* QuartzCore.framework in Frameworks */,
-				B1DFB86CCCEFA41908A1ECAB /* libPods.a in Frameworks */,
+				47328B574C6CD093C0056FA7 /* libPods-Retini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB28F2F6303B6AEA12A075E1 /* libPods-RetiniTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,8 +94,8 @@
 				038880B01B305F6300F8807F /* Retini */,
 				038880C41B305F6300F8807F /* RetiniTests */,
 				038880AF1B305F6300F8807F /* Products */,
-				4927C7DBA15A05F0F55914E5 /* Pods */,
 				8285E5EB8194D0C596CD716C /* Frameworks */,
+				E113CB5933778232E871B447 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +121,8 @@
 				038880B81B305F6300F8807F /* Images.xcassets */,
 				038880BA1B305F6300F8807F /* MainMenu.xib */,
 				038880B11B305F6300F8807F /* Supporting Files */,
+				50A4850E2647F8DD006F0F20 /* PDFConverter.swift */,
+				50A4850D2647F8DC006F0F20 /* Retini-Bridging-Header.h */,
 			);
 			path = Retini;
 			sourceTree = "<group>";
@@ -189,22 +199,25 @@
 			name = "3rd party";
 			sourceTree = "<group>";
 		};
-		4927C7DBA15A05F0F55914E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				01073CEF1217BB100AF669F3 /* Pods.debug.xcconfig */,
-				B51EA5C5128713B2229D087B /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		8285E5EB8194D0C596CD716C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				03CB44F11BC80603003C4879 /* QuartzCore.framework */,
-				E7D0CA933B9B2C98D739BDA6 /* libPods.a */,
+				6CE008719F74460C095990B4 /* libPods-Retini.a */,
+				A5A5B0C487DB0B46819370BB /* libPods-RetiniTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E113CB5933778232E871B447 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5960391DE4F06B79E1040C4E /* Pods-Retini.debug.xcconfig */,
+				A6FDF1B4122CDD40C611D4E2 /* Pods-Retini.release.xcconfig */,
+				A6257A74DA8D7820B4A03E96 /* Pods-RetiniTests.debug.xcconfig */,
+				44369B010FE891DCA46A076A /* Pods-RetiniTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,11 +227,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 038880CB1B305F6300F8807F /* Build configuration list for PBXNativeTarget "Retini" */;
 			buildPhases = (
-				C35E1F055E6903204DEFC37E /* Check Pods Manifest.lock */,
+				5FB7AA49AFFF2DB5309B931F /* [CP] Check Pods Manifest.lock */,
 				038880AA1B305F6300F8807F /* Sources */,
 				038880AB1B305F6300F8807F /* Frameworks */,
 				038880AC1B305F6300F8807F /* Resources */,
-				A7E3D5924D2B308622AF05A5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 038880CE1B305F6300F8807F /* Build configuration list for PBXNativeTarget "RetiniTests" */;
 			buildPhases = (
+				6693DB95873AC8DC66355DE6 /* [CP] Check Pods Manifest.lock */,
 				038880BD1B305F6300F8807F /* Sources */,
 				038880BE1B305F6300F8807F /* Frameworks */,
 				038880BF1B305F6300F8807F /* Resources */,
@@ -258,8 +271,8 @@
 				TargetAttributes = {
 					038880AD1B305F6300F8807F = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = DAQ444SUMR;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1250;
+						ProvisioningStyle = Manual;
 					};
 					038880C01B305F6300F8807F = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -308,34 +321,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7E3D5924D2B308622AF05A5 /* Copy Pods Resources */ = {
+		5FB7AA49AFFF2DB5309B931F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Retini-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C35E1F055E6903204DEFC37E /* Check Pods Manifest.lock */ = {
+		6693DB95873AC8DC66355DE6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RetiniTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -352,6 +379,7 @@
 				03D63F7C1BB9804200CC8485 /* NSImage+Resize.m in Sources */,
 				039731AF1FA327350040F92E /* UpdateModel.m in Sources */,
 				03C461981C2760CD00F1572A /* ResizeModel.m in Sources */,
+				50A4850F2647F8DD006F0F20 /* PDFConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,13 +499,14 @@
 		};
 		038880CC1B305F6300F8807F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01073CEF1217BB100AF669F3 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 5960391DE4F06B79E1040C4E /* Pods-Retini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DAQ444SUMR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Retini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -485,18 +514,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.erikterwan.Retini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Retini/Retini-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		038880CD1B305F6300F8807F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B51EA5C5128713B2229D087B /* Pods.release.xcconfig */;
+			baseConfigurationReference = A6FDF1B4122CDD40C611D4E2 /* Pods-Retini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = DAQ444SUMR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Retini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -504,12 +537,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.erikterwan.Retini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Retini/Retini-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		038880CF1B305F6300F8807F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6257A74DA8D7820B4A03E96 /* Pods-RetiniTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -530,7 +567,9 @@
 		};
 		038880D01B305F6300F8807F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44369B010FE891DCA46A076A /* Pods-RetiniTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
